@@ -13,7 +13,8 @@ class Vaga extends Model
         'nome',
         'descricao',
         'salario',
-        'tipo'
+        'tipo',
+        'flag'
     ];
     
 }

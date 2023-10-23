@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VagaController;
 use App\Http\Controllers\CandidatoController;
 use App\Http\Controllers\InscritoController;
+use App\Http\Controllers\LoginController;
 use App\Models\Candidato;
 use App\Models\Inscricao;
 use App\Models\Vaga;
@@ -25,21 +26,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/lista', [VagaController::class, 'ReturnList'])->name('vaga.ReturnLists');
+Route::get('/lista', [VagaController::class, 'ReturnList'])->name('vaga.ReturnLists')  ->middleware('auth');
 
-Route::get('/vaga', [VagaController::class, 'createList'])->name('vaga.createList');
+Route::get('/vaga', [VagaController::class, 'createList'])->name('vaga.createList')  ->middleware('auth');
 
-Route::post('/inserir', [VagaController::class, 'insert'])->name('vaga.insert');
+Route::post('/inserir', [VagaController::class, 'insert'])->name('vaga.insert')  ->middleware('auth');
 
-Route::get('/vaga/{id}', [VagaController::class, 'opportunity'])->name('vaga.show');
+Route::get('/vaga/{id}', [VagaController::class, 'opportunity'])->name('vaga.show')  ->middleware('auth');
 
 Route::get('/edita/{id}', [VagaController::class, 'edit'])->name('vaga.edit');
 
-
 Route::put('/atualiza/{id}', [VagaController::class, 'update'])->name('vaga.change');
 
-
 Route::delete('/deleta/{id}', [VagaController::class, 'del'])->name('vaga.destroy');
+
+Route::get('/pause/{id}', [VagaController::class, 'pause'])->name('vaga.pause');
+
+Route::get('/reactive/{id}', [VagaController::class, 'reactive'])->name('vaga.reactive');
 
 
 /* Rotas para entidade CANDIDATO */
@@ -60,3 +63,10 @@ Route::delete('/candidato/deleta/{id}', [CandidatoController::class, 'del'])->na
 
 /* Rotas para INSCRIÇÃO*/
 Route::get('/listaVagas', [VagaController::class, 'ListVaga'])->name('vaga.Listagem');
+
+Route::get('/login', [LoginController::class, 'log'])->name('login.show');
+
+Route::post('/login/acesso', [LoginController::class, 'logar'])->name('login.send');
+
+
+Route::get('/logout', [LoginController::class, 'destroy'])->name('login.destroy') ->middleware('auth');

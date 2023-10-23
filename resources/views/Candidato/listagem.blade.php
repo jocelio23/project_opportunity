@@ -1,6 +1,6 @@
 <h1>Listagem de candidatos</h1> <h5><a href="/"> Painel</a></h5>
 
-<a href="{{ route('candidato.createList') }}">
+<a href="{{ route('vaga.createList') }}">
     <h1> Cadastar novo candidato</h1>
 </a>
 

@@ -28,7 +28,9 @@ class VagaController extends Controller
 
     public function  insert(VagaRequest $request, Vaga $vaga)
     {
+        
         $data = $request->all();
+     /*    dd($request); */
         $vaga = $vaga::create($data);
         return redirect('/lista')->with('msg', 'vaga inserida com sucesso.');
     }
@@ -39,7 +41,7 @@ class VagaController extends Controller
             return back();
         }
 
-        return view('Admin/pag', compact('vag'));
+        return view('Admin/pagina', compact('vag'));
     }
 
     public function edit(Vaga $vaga, string|int $id)
@@ -72,7 +74,22 @@ class VagaController extends Controller
         return redirect()->route('vaga.ReturnLists');
     }
 
-    public function pause(){
-        
+    public function pause($id){
+        if (!$vag = Vaga::find($id)) {
+            return back();
+        }
+
+       Vaga::where('id', $id)->update(['flag' => '-10']);
+        return redirect()->route('vaga.ReturnLists');
     }
+
+    public function reactive($id){
+        if (!$vag = Vaga::find($id)) {
+            return back();
+        }
+
+       Vaga::where('id', $id)->update(['flag' => '10']);
+        return redirect()->route('vaga.ReturnLists');
+    }
+
 }

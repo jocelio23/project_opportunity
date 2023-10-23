@@ -18,6 +18,7 @@ return new class extends Migration
                   $table->string('descricao');
                   $table->double('salario');
                   $table->string('tipo');
+                  $table->string('flag');
                   $table->timestamps();
       
        });
