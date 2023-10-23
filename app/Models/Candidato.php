@@ -13,6 +13,7 @@ class Candidato extends Model
         'nome',
         'formacao',
         'pretensao',
-        'email'
+        'email',
+        'senha',
     ];
 }

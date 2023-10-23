@@ -27,10 +27,10 @@
     <link href="lib/animate/animate.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,7 +47,7 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
-                <h1 class="m-0"><img src="img/4.png" width="50px">VagasOnly</h1>
+                <h1 class="m-0"><img src="../img/4.png" width="50px">VagasOnly</h1>
             </a>
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -66,11 +66,11 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Área de login</h5>
+                <h5 class="fw-bold text-primary text-uppercase">Login do candidato</h5>
                 @error('message')
                     <p class="text-danger"><i class="fa fa-key fa-fw"></i>*E-mail ou senha inválidos</p>
                 @enderror
-                <form action="{{ route('login.send') }}" method="POST">
+                <form action="{{ route('candidato.log') }}" method="POST">
                     @csrf
                     <div class="row g-3">
 
@@ -122,7 +122,7 @@
 
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

@@ -15,6 +15,18 @@ class VagaController extends Controller
         return view('Admin/listagem', compact('vagas'));
     }
 
+   /*  public function indexList(Vaga $vaga)
+    {
+        $vagas = $vaga->all();
+        return view('welcome', compact('vagas'));
+    } */
+
+
+    public function padrao(Vaga $vaga){
+        $vagas = $vaga->all();
+        return view('welcome', compact('vagas'));
+    }
+    
     public function ListVaga(Vaga $vaga)
     {
         $vagas = $vaga->all();

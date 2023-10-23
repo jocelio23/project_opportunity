@@ -23,14 +23,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../lib/animate/animate.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,7 +47,7 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
-                <h1 class="m-0"><img src="img/4.png" width="50px">VagasOnly</h1>
+                <h1 class="m-0"><img src="../img/4.png" width="50px">VagasOnly</h1>
             </a>
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -55,7 +55,6 @@
                 </div>
 
                 <a href="{{ '/' }}" class="btn btn-primary py-2 px-4 ms-3">Painel</a>
-                <a href="{{ route('candidato.registro') }}" class="btn btn-primary py-2 px-4 ms-3">Criar conta</a>
             </div>
         </nav>
     </div>
@@ -66,28 +65,55 @@
     <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Área de login</h5>
+                <h5 class="fw-bold text-primary text-uppercase">Área de registro</h5>
                 @error('message')
                     <p class="text-danger"><i class="fa fa-key fa-fw"></i>*E-mail ou senha inválidos</p>
                 @enderror
-                <form action="{{ route('login.send') }}" method="POST">
+
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        {{ $error }}
+                    @endforeach
+                @endif
+
+                <form action="{{ route('candidato.insert') }}" method="POST">
                     @csrf
                     <div class="row g-3">
 
                         <div class="col-md-12">
-                            <input type="email" name="email" class="form-control border-0 bg-light px-4"
-                                placeholder="Email" style="height: 55px;">
+                            <input type="text" name="nome" class="form-control border-0 bg-light px-4"
+                                placeholder="Nome" style="height: 55px;" value="{{ old('nome') }}">
                         </div>
+
+                        <div class="col-md-12">
+                            <input type="text" name="formacao" class="form-control border-0 bg-light px-4"
+                                placeholder="Formação" style="height: 55px;" value="{{ old('formacao') }}">
+                        </div>
+
+                        <div class="col-md-12">
+                            <input type="text" name="pretensao" class="form-control border-0 bg-light px-4"
+                                placeholder="pretensão" style="height: 55px;" value="{{ old('pretensao') }}">
+                        </div>
+
+                        <div class="col-md-12">
+                            <input type="email" name="email" class="form-control border-0 bg-light px-4"
+                                placeholder="E-mail" style="height: 55px;" value="{{ old('email') }}">
+                        </div>
+
                         <div class="col-12">
-                            <input type="password" name="password" class="form-control border-0 bg-light px-4"
+                            <input type="password" name="senha" class="form-control border-0 bg-light px-4"
                                 placeholder="Senha" style="height: 55px;">
                         </div>
 
                         <div class="col-12">
-                            <button class="btn btn-primary w-100 py-3" type="submit">Logar</button>
+                            <button class="btn btn-primary w-100 py-3" type="submit">Cadastrar</button>
                         </div>
                     </div>
+
+
+
                 </form>
+
             </div>
         </div>
     </div>
@@ -122,7 +148,7 @@
 
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

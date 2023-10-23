@@ -15,6 +15,14 @@ class CandidatoController extends Controller
         return view('Candidato/listagem', compact('candidato'));
     }
 
+    public  function registro(){
+        return view('Candidato/registro');
+    }
+
+    public  function login(){
+        return view('Candidato/loginCandidato');
+    }
+
     public function createList()
     {
         return view('Candidato/create');
@@ -24,7 +32,8 @@ class CandidatoController extends Controller
     {
         $data = $request->all();
         $candidato = $candidato::create($data);
-        return redirect('/candidato/Lista')->with('msg', 'candidato inserida com sucesso.');
+        return redirect()->route('candidato.login');
+        
     }
 
     public function candidate(string|int $id)
@@ -66,5 +75,17 @@ class CandidatoController extends Controller
 
         return redirect()->route('candidato.ReturnLists');
     }
+
+
+    public function logCandidato(){
+        if (auth()->attempt(request(['email', 'senha'])) == false) 
+        {
+            return back()->withErrors([
+                'message' => 'Email ou senha está incorreta'
+            ]);
+        }
+        return view('/');
+    }
+
 
 }

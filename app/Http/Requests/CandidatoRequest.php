@@ -27,7 +27,8 @@ class CandidatoRequest extends FormRequest
             'nome' => 'required|min:4|max:120',
             'formacao' => 'required|min:4|max:500',
             'pretensao' => 'required',
-            'email' => 'required|unique:candidatos'
+            'email' => 'required|unique:candidatos',
+            'senha' => 'required',
         ];
 
         if($this->method() === 'PUT'){

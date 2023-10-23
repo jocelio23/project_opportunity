@@ -54,8 +54,9 @@
                 <div class="navbar-nav ms-auto py-0">
                 </div>
 
-                <a href="{{ route('login.show') }}" class="btn btn-primary py-2 px-4 ms-3">Login</a>
-                <a href="{{ route('login.show') }}" class="btn btn-primary py-2 px-4 ms-3">Cadastrar perfil</a>
+                <a href="{{ route('login.show') }}" class="btn btn-primary py-2 px-4 ms-3">Adm</a>
+                <a href="{{ route('candidato.login') }}" class="btn btn-primary py-2 px-4 ms-3">Log candidato</a>
+                <a href="{{ route('candidato.registro') }}" class="btn btn-primary py-2 px-4 ms-3">Criar conta</a>
             </div>
         </nav>
     </div>
@@ -67,58 +68,40 @@
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-primary text-uppercase">Oportunidades Ativas</h5>
-                <h1 class="mb-0">Não perca tempo, candidate-se agora mesmo!</h1>
+                <h3 class="mb-0">Não perca tempo, candidate-se agora mesmo!</h3>
+
+                {{-- <h1 class="mb-0">
+                    @if (auth()->user() == null)
+                <h5>Você precisa estar logado para se inscrever</h5>
+                </h1>
+            @endif --}}
             </div>
             <div class="row g-5">
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-                    <div
-                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fa fa-code text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Nome da vaga</h4>
-                        <p class="m-0">Descrição</p>
-                        <div class="col-lg-6 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                            @if(auth()->user() == null)
-                                <label>Você precisa estar logado</label>
-                            @endif
+                @foreach ($vagas as $vaga)
+                    @if ($vaga->flag != "-10")
+                        <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
+                            <div
+                                class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
+                                <div class="service-icon">
+                                    <i class="fa fa-code text-white"></i>
+                                </div>
+                                <h4 class="mb-3">{{ $vaga->nome }}</h4>
+                                <p class="m-0">Descrição:{{ $vaga->descricao }}</p>
+                                <p class="m-0">Descrição:{{ $vaga->salario }}</p>
+                                <p class="m-0">Descrição:{{ $vaga->tipo }}</p>
+                                <div class="col-lg-6 col-md-6 wow zoomIn" data-wow-delay="0.6s">
 
-                            <button class="btn btn-primary w-100 py-3" type="submit" name="submit" disabled>Me
-                                inscrever</button>
-                        </div>
+                                    @if (auth()->user())
+                                        <button class="btn btn-primary w-100 py-3" type="submit" name="submit">Me
+                                            inscrever</button>
+                                    @endif
+                                </div>
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-                    <div
-                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fa fa-code text-white"></i>
+                            </div>
                         </div>
-                        <h4 class="mb-3">Nome da vaga</h4>
-                        <p class="m-0">Descrição</p>
-                        <div class="col-lg-6 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                            <button class="btn btn-primary w-100 py-3" type="submit" name="submit">Me
-                                inscrever</button>
-                        </div>
+                    @endif
+                @endforeach
 
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
-                    <div
-                        class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">
-                        <div class="service-icon">
-                            <i class="fa fa-code text-white"></i>
-                        </div>
-                        <h4 class="mb-3">Nome da vaga</h4>
-                        <p class="m-0">Descrição</p>
-                        <div class="col-lg-6 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-                            <button class="btn btn-primary w-100 py-3" type="submit" name="submit">Me
-                                inscrever</button>
-                        </div>
-
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -138,7 +121,8 @@
             <div class="row justify-content-end">
                 <div class="col-lg-8 col-md-6">
                     <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Jota Tech</a>. Todos
+                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Jota Tech</a>.
+                            Todos
                             os direitos reservados.
                     </div>
                 </div>

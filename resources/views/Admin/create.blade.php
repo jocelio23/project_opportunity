@@ -56,6 +56,7 @@
                 </div>
                 <h5>ADMIN: {{auth()->user()->name }}</h5>
                 <a href="{{ route('vaga.ReturnLists') }}" class="btn btn-primary py-2 px-4 ms-3">Oportunidades</a>
+                <a href="{{ route('candidato.ReturnLists') }}" class="btn btn-primary py-2 px-4 ms-3">Candidatos</a>
                 <a href="{{ route('login.destroy') }}" class="btn btn-danger py-2 px-4 ms-3">Sair</a>
 
             </div>
