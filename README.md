@@ -113,7 +113,7 @@ Acesse o projeto
 
 banco -> necessário criar um BD com nome "laravel"  para que o comando abaixo funcione
 ```sh
-php artisan migrate
+php artisan migrate --seed
 
 ```
 Autenticação gerada automaticamente para o administrador
