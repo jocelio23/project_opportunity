@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\VagaRequest;
+use App\Models\Inscricao;
 use App\Models\Vaga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,9 +16,10 @@ class VagaController extends Controller
         return view('Admin/listagem', compact('vagas'));
     }
 
-    public function padrao(Vaga $vaga){
+    public function padrao(Vaga $vaga, Inscricao $inscricao){
         $vagas = $vaga->all();
-        return view('welcome', compact('vagas'));
+        $inscricoes = $inscricao->all();
+        return view('welcome', compact('vagas','inscricoes'));
     }
     
     public function ListVaga(Vaga $vaga)

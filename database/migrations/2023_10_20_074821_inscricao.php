@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('inscricaos', function (Blueprint $table) {
             $table->id();
             $table->string('flag');
-            $table->bigInteger('id_candidato')->unsigned();
-            $table->foreign('id_candidato')->references('id')->on('candidatos');
-            $table->bigInteger('id_vaga')->unsigned();
-            $table->foreign('id_vaga')->references('id')->on('vagas');
+            $table->string('candidato');
+            $table->string('vaga');
             $table->timestamps();
+            
         });
+
+   
     }
 
     /**

@@ -116,3 +116,6 @@ banco -> necessário criar um BD com nome "laravel"  para que o comando abaixo f
 php artisan migrate
 
 ```
+Autenticação gerada automaticamente para o administrador
+email:teste@teste         
+senha: teste

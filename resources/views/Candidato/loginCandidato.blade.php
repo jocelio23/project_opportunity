@@ -79,7 +79,7 @@
                                 placeholder="Email" style="height: 55px;">
                         </div>
                         <div class="col-12">
-                            <input type="text" name="password" class="form-control border-0 bg-light px-4"
+                            <input type="password" name="password" class="form-control border-0 bg-light px-4"
                                 placeholder="Senha" style="height: 55px;">
                         </div>
 

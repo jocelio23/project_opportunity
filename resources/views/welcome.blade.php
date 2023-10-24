@@ -53,17 +53,19 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                 </div>
-                @if(auth()->user())
-                <h5>Usuário: {{auth()->user()->name }}</h5>
+                @if (auth()->user())
+                    <h5>Usuário: {{ auth()->user()->name }}</h5>
                 @endif
 
-                <a href="{{ route('login.show') }}" class="btn btn-primary py-2 px-4 ms-3">Adm</a>
-                @if(!auth()->user())
-                    <a href="{{ route('candidato.login') }}" class="btn btn-primary py-2 px-4 ms-3">Login do candidato</a>
+                <a href="{{ route('login.show') }}" class="btn btn-primary py-2 px-4 ms-3" target="_blank">Adm</a>
+                @if (!auth()->user())
+                    <a href="{{ route('candidato.login') }}" class="btn btn-primary py-2 px-4 ms-3">Login do
+                        candidato</a>
                 @endif
                 <a href="{{ route('candidato.registro') }}" class="btn btn-primary py-2 px-4 ms-3">Criar conta</a>
-{{--                 <a href="{{ route('candidato.destroy') }}" class="btn btn-danger py-2 px-4 ms-3">Sair</a>
- --}}            </div>
+                {{--                 <a href="{{ route('candidato.destroy') }}" class="btn btn-danger py-2 px-4 ms-3">Sair</a>
+ --}}
+            </div>
         </nav>
     </div>
     <!-- Navbar End -->
@@ -75,8 +77,8 @@
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-primary text-uppercase">Oportunidades Ativas</h5>
                 <h3 class="mb-0">Não perca tempo, candidate-se agora mesmo!</h3>
-               
-               
+
+
                 <h1 class="mb-0">
                     @if (auth()->user() == null)
                         <h5>Você precisa estar logado para se inscrever</h5>
@@ -97,54 +99,83 @@
                                 <p class="m-0">Descrição:{{ $vaga->salario }}</p>
                                 <p class="m-0">Descrição:{{ $vaga->tipo }}</p>
                                 <div class="col-lg-6 col-md-6 wow zoomIn" data-wow-delay="0.6s">
-
+                                    {{--  id:{{ auth()->user()->id}}  --}}
                                     @if (auth()->user())
-                                        <button class="btn btn-primary w-100 py-3" type="submit" name="submit">Me
-                                            inscrever</button>
-                                    @endif
-                                </div>
+                                        <form action="{{ route('inscricao.insert') }}" method="POST">
+                                            @csrf
+
+                                            <input type="hidden" name="flag" value="10">
+                                            <input type="hidden" name="candidato" value="{{ auth()->user()->id }}">
+                                            <input type="hidden" name="vaga" value="{{ $vaga->id }}">
+
+
+                                            {{-- Se já tá inscrito nessa vaga não mostre --}}
+
+                                            <button type="submit" class="btn btn-primary w-100 py-3" type="submit"
+                                                name="submit">Me
+                                                inscrever</button>
+                                        </form>
+
+                                        @foreach ($inscricoes as $ins)
+                                            @if ($vaga->id == $ins->vaga && $ins->candidato == auth()->user()->id)
+                                                <form action="{{ route('vaga.desistir', $ins->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <div class="col-12">
+                                                        <button class="btn btn-danger w-100 py-3"
+                                                            type="submit">Desistir</button>
+                                                    </div>
+                                                </form>
+                                            @break
+                                        @endif
+                                    @endforeach
+
+
+
+                                @endif
 
                             </div>
+
                         </div>
-                    @endif
-                @endforeach
-
-            </div>
-        </div>
-    </div>
-    <!-- Service End -->
-
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-
-        </div>
-    </div>
-
-    <div class="container-fluid text-white" style="background: #061429;">
-        <div class="container text-center">
-            <div class="row justify-content-end">
-                <div class="col-lg-8 col-md-6">
-                    <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
-                        <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Jota Tech</a>.
-                            Todos
-                            os direitos reservados.
                     </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light mt-5 wow fadeInUp" data-wow-delay="0.1s">
+    <div class="container">
+
+    </div>
+</div>
+
+<div class="container-fluid text-white" style="background: #061429;">
+    <div class="container text-center">
+        <div class="row justify-content-end">
+            <div class="col-lg-8 col-md-6">
+                <div class="d-flex align-items-center justify-content-center" style="height: 75px;">
+                    <p class="mb-0">&copy; <a class="text-white border-bottom" href="#">Jota Tech</a>.
+                        Todos
+                        os direitos reservados.
                 </div>
             </div>
         </div>
     </div>
-    <!-- Footer End -->
+</div>
+<!-- Footer End -->
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
 </body>
 
 </html>

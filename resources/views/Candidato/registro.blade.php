@@ -54,7 +54,7 @@
                 <div class="navbar-nav ms-auto py-0">
                 </div>
 
-                <a href="{{ '/' }}" class="btn btn-primary py-2 px-4 ms-3">Painel</a>
+                <a href="{{ route('vaga.createList') }}" class="btn btn-primary py-2 px-4 ms-3">Cadastro</a>
             </div>
         </nav>
     </div>
@@ -104,7 +104,7 @@
                             <input type="password" name="password" class="form-control border-0 bg-light px-4"
                                 placeholder="Senha" style="height: 55px;">
                         </div>
-
+                        <input type="hidden" name="flag" value="0">
                         <div class="col-12">
                             <button class="btn btn-primary w-100 py-3" type="submit">Cadastrar</button>
                         </div>

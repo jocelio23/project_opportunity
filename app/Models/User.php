@@ -23,6 +23,7 @@ class User extends Authenticatable
         'pretensao',
         'email',
         'password',
+        'flag',
     ];
 
     /**

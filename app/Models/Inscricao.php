@@ -11,7 +11,8 @@ class Inscricao extends Model
 
     protected $fillable = [
         'flag',
-        'id_candidato',
-        'id_vaga'
+        'candidato',
+        'vaga'
     ];
+    
 }

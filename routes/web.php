@@ -22,9 +22,6 @@ use App\Models\Vaga;
 
 /* Rotas para entidade VAGA */
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
 
 Route::get('/', [VagaController::class, 'padrao'])->name('vaga.padrao');
 
@@ -69,10 +66,6 @@ Route::put('/candidato/atualiza/{id}', [CandidatoController::class, 'update'])->
 
 Route::delete('/candidato/deleta/{id}', [CandidatoController::class, 'del'])->name('candidato.destroy');
 
-/* Route::get('/candidato/logout', [CandidatoController::class, 'destroy'])->name('candidato.destroy'); */
-
-
-
 
 
 /* Rotas para INSCRIÇÃO*/
@@ -83,3 +76,12 @@ Route::get('/login', [LoginController::class, 'log'])->name('login.show');
 Route::post('/login/acesso', [LoginController::class, 'logar'])->name('login.send');
 
 Route::get('/logout', [LoginController::class, 'destroy'])->name('login.destroy')->middleware('auth');
+
+
+
+/* INSCRIÇÃO EM VAGA */
+Route::post('/inscricao', [InscritoController::class, 'insert'])->name('inscricao.insert');
+
+Route::get('/lista/comp', [InscritoController::class, 'comp'])->name('vaga.comp');
+
+Route::delete('/inscricao/{id}', [InscritoController::class, 'desistir'])->name('vaga.desistir');

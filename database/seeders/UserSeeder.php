@@ -15,11 +15,12 @@ class UserSeeder extends Seeder
     {
 
         User::create([
-            'name' => 'jocelio',
+            'name' => 'teste',
             'formacao' => 'Emprego teste',
             'pretensao' => '1000',
-            'email' => 'jota@jota.com',            
-            'password' => 'jota',
+            'email' => 'teste@teste',            
+            'password' => 'teste',
+            'flag' => '10',
         ]);
 
         

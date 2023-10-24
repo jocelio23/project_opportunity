@@ -29,6 +29,7 @@ class CandidatoRequest extends FormRequest
             'pretensao' => 'required',
             'email' => 'required|unique:candidatos',
             'password' => 'required',
+            'flag' => 'required',
         ];
 
         if($this->method() === 'PUT'){
