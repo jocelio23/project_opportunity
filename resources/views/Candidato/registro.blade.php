@@ -54,7 +54,7 @@
                 <div class="navbar-nav ms-auto py-0">
                 </div>
 
-                <a href="{{ route('vaga.createList') }}" class="btn btn-primary py-2 px-4 ms-3">Cadastro</a>
+                <a href="{{ route('vaga.padrao') }}" class="btn btn-primary py-2 px-4 ms-3">Painel</a>
             </div>
         </nav>
     </div>
@@ -66,6 +66,7 @@
         <div class="container py-5">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-primary text-uppercase">Área de registro</h5>
+                <label>Esqueceu seu usuário ou senha? Entre em contato com o ADM pelo Email:teste@teste</label>
                 @error('message')
                     <p class="text-danger"><i class="fa fa-key fa-fw"></i>*E-mail ou senha inválidos</p>
                 @enderror
