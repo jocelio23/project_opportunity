@@ -16,9 +16,12 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'jocelio',
+            'formacao' => 'Emprego teste',
+            'pretensao' => '1000',
             'email' => 'jota@jota.com',            
             'password' => 'jota',
         ]);
 
+        
     }
 }

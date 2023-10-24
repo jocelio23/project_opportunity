@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CandidatoRequest;
 use App\Models\Candidato;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class CandidatoController extends Controller
 {
-    public function ReturnList(Candidato $candidato)
+    public function ReturnList(User $candidato)
     {
         $candidato = $candidato->all();
         return view('Candidato/listagem', compact('candidato'));
@@ -28,7 +30,7 @@ class CandidatoController extends Controller
         return view('Candidato/create');
     }
 
-    public function  insert(CandidatoRequest $request, Candidato $candidato)
+    public function  insert(CandidatoRequest $request, User $candidato)
     {
         $data = $request->all();
         $candidato = $candidato::create($data);
@@ -38,14 +40,14 @@ class CandidatoController extends Controller
 
     public function candidate(string|int $id)
     {
-        if (!$cand = Candidato::find($id)) {
+        if (!$cand = User::find($id)) {
             return back();
         }
 
         return view('Candidato/pag', compact('cand'));
     }
 
-    public function edit(Candidato $candidato, string|int $id)
+    public function edit(User $candidato, string|int $id)
     {
         if (!$cand = $candidato->where('id', $id)->first()) {
             return back();
@@ -54,7 +56,7 @@ class CandidatoController extends Controller
     }
 
 
-    public function update(CandidatoRequest $request, Candidato $candidato, string|int $id)
+    public function update(CandidatoRequest $request, User $candidato, string|int $id)
     {
         if (!$cand = $candidato->find($id)) {
             return back();
@@ -66,7 +68,7 @@ class CandidatoController extends Controller
         return redirect()->route('candidato.ReturnLists');
     }
 
-    public function del(Candidato $candidato, string|int $id){
+    public function del(User $candidato, string|int $id){
         if (!$cand = $candidato->find($id)) {
             return back();
         }
@@ -76,16 +78,10 @@ class CandidatoController extends Controller
         return redirect()->route('candidato.ReturnLists');
     }
 
-
-    public function logCandidato(){
-        if (auth()->attempt(request(['email', 'senha'])) == false) 
-        {
-            return back()->withErrors([
-                'message' => 'Email ou senha está incorreta'
-            ]);
-        }
-        return view('/');
-    }
-
+   /*  public function destroy()
+    {
+        Auth::logout();
+        return redirect()->route('vaga.padrao');
+    }  */
 
 }

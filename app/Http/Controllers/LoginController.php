@@ -25,6 +25,18 @@ class LoginController extends Controller
         
     }
 
+    public function logCand()
+    {
+        if (auth()->attempt(request(['email', 'password'])) == false) 
+        {
+            return back()->withErrors([
+                'message' => 'Email ou senha está incorreta'
+            ]);
+        }
+        return redirect()->route('vaga.padrao');
+        
+    }
+
     public function destroy()
     {
         Auth::logout();

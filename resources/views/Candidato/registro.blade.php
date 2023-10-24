@@ -81,8 +81,8 @@
                     <div class="row g-3">
 
                         <div class="col-md-12">
-                            <input type="text" name="nome" class="form-control border-0 bg-light px-4"
-                                placeholder="Nome" style="height: 55px;" value="{{ old('nome') }}">
+                            <input type="text" name="name" class="form-control border-0 bg-light px-4"
+                                placeholder="Nome" style="height: 55px;" value="{{ old('name') }}">
                         </div>
 
                         <div class="col-md-12">
@@ -101,7 +101,7 @@
                         </div>
 
                         <div class="col-12">
-                            <input type="password" name="senha" class="form-control border-0 bg-light px-4"
+                            <input type="password" name="password" class="form-control border-0 bg-light px-4"
                                 placeholder="Senha" style="height: 55px;">
                         </div>
 

@@ -47,7 +47,7 @@
     <div class="container-fluid position-relative p-0">
         <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
             <a href="index.html" class="navbar-brand p-0">
-                <h1 class="m-0"><img src="../img/4.png" width="50px">VagasOnly</h1>
+                <h1 class="m-0"><img src="/img/4.png" width="50px">VagasOnly</h1>
             </a>
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -82,28 +82,28 @@
                     <div class="row g-3">
 
                         <div class="col-md-12">
-                            <input type="text" name="nome" class="form-control border-0 bg-light px-4"
-                                placeholder="Nome" style="height: 55px;" value="{{ $cand->nome }}"">
+                            <input type="text" name="name" class="form-control border-0 bg-light px-4"
+                                placeholder="Nome" style="height: 55px;" value="{{ $cand->name }}">
                         </div>
 
                         <div class="col-md-12">
                             <input type="text" name="formacao" class="form-control border-0 bg-light px-4"
-                                placeholder="Formação" style="height: 55px;"value="{{ $cand->formacao }}"">
+                                placeholder="Formação" style="height: 55px;"value="{{ $cand->formacao }}">
                         </div>
 
                         <div class="col-md-12">
                             <input type="text" name="pretensao" class="form-control border-0 bg-light px-4"
-                                placeholder="pretensão" style="height: 55px;" value="{{ $cand->pretensao }}"">
+                                placeholder="pretensão" style="height: 55px;" value="{{ $cand->pretensao }}">
                         </div>
 
                         <div class="col-md-12">
                             <input type="email" name="email" class="form-control border-0 bg-light px-4"
-                                placeholder="E-mail" style="height: 55px;" value="{{ $cand->email }}"">
+                                placeholder="E-mail" style="height: 55px;" value="{{ $cand->email }}">
                         </div>
 
                         <div class="col-12">
-                            <input type="password" name="senha" class="form-control border-0 bg-light px-4"
-                                placeholder="Senha" style="height: 55px;" value="{{ $cand->senha }}">
+                            <input type="hidden" name="password" class="form-control border-0 bg-light px-4"
+                                placeholder="Senha" style="height: 55px;" value="{{ $cand->password }}">
                         </div>
 
                         <div class="col-12">

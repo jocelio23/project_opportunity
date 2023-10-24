@@ -24,11 +24,11 @@ class CandidatoRequest extends FormRequest
     {
 
         $rules= [
-            'nome' => 'required|min:4|max:120',
+            'name' => 'required|min:4|max:120',
             'formacao' => 'required|min:4|max:500',
             'pretensao' => 'required',
             'email' => 'required|unique:candidatos',
-            'senha' => 'required',
+            'password' => 'required',
         ];
 
         if($this->method() === 'PUT'){

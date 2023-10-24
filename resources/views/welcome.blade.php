@@ -53,11 +53,17 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
                 </div>
+                @if(auth()->user())
+                <h5>Usuário: {{auth()->user()->name }}</h5>
+                @endif
 
                 <a href="{{ route('login.show') }}" class="btn btn-primary py-2 px-4 ms-3">Adm</a>
-                <a href="{{ route('candidato.login') }}" class="btn btn-primary py-2 px-4 ms-3">Log candidato</a>
+                @if(!auth()->user())
+                    <a href="{{ route('candidato.login') }}" class="btn btn-primary py-2 px-4 ms-3">Login do candidato</a>
+                @endif
                 <a href="{{ route('candidato.registro') }}" class="btn btn-primary py-2 px-4 ms-3">Criar conta</a>
-            </div>
+{{--                 <a href="{{ route('candidato.destroy') }}" class="btn btn-danger py-2 px-4 ms-3">Sair</a>
+ --}}            </div>
         </nav>
     </div>
     <!-- Navbar End -->
@@ -69,16 +75,17 @@
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
                 <h5 class="fw-bold text-primary text-uppercase">Oportunidades Ativas</h5>
                 <h3 class="mb-0">Não perca tempo, candidate-se agora mesmo!</h3>
-
-                {{-- <h1 class="mb-0">
+               
+               
+                <h1 class="mb-0">
                     @if (auth()->user() == null)
-                <h5>Você precisa estar logado para se inscrever</h5>
+                        <h5>Você precisa estar logado para se inscrever</h5>
                 </h1>
-            @endif --}}
+                @endif
             </div>
             <div class="row g-5">
                 @foreach ($vagas as $vaga)
-                    @if ($vaga->flag != "-10")
+                    @if ($vaga->flag != '-10')
                         <div class="col-lg-4 col-md-6 wow zoomIn" data-wow-delay="0.9s">
                             <div
                                 class="service-item bg-light rounded d-flex flex-column align-items-center justify-content-center text-center">

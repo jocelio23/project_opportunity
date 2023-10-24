@@ -70,7 +70,7 @@
                 @error('message')
                     <p class="text-danger"><i class="fa fa-key fa-fw"></i>*E-mail ou senha inválidos</p>
                 @enderror
-                <form action="{{ route('candidato.log') }}" method="POST">
+                <form action="{{ route('login.cand') }}" method="POST">
                     @csrf
                     <div class="row g-3">
 
@@ -79,7 +79,7 @@
                                 placeholder="Email" style="height: 55px;">
                         </div>
                         <div class="col-12">
-                            <input type="password" name="password" class="form-control border-0 bg-light px-4"
+                            <input type="text" name="password" class="form-control border-0 bg-light px-4"
                                 placeholder="Senha" style="height: 55px;">
                         </div>
 

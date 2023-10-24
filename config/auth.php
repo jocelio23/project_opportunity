@@ -40,6 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+       /*  'candidato' => [
+            'driver' => 'session',
+            'provider' => 'candidatos',
+        ], */
+
     ],
 
     /*
@@ -65,10 +71,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+       /*   'candidatos' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Candidato::class,
+         ], */
     ],
 
     /*

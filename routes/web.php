@@ -53,7 +53,7 @@ Route::get('/candidato/registro', [CandidatoController::class, 'registro'])->nam
 
 Route::get('/candidato/login', [CandidatoController::class, 'login'])->name('candidato.login');
 
-Route::post('/candidato/acesso', [CandidatoController::class, 'logCandidato'])->name('candidato.log');
+Route::post('/candidato/acesso', [LoginController::class, 'logCand'])->name('login.cand');
 
 Route::get('/candidato/Lista', [CandidatoController::class, 'ReturnList'])->name('candidato.ReturnLists');
 
@@ -68,6 +68,11 @@ Route::get('/candidato/edita/{id}', [CandidatoController::class, 'edit'])->name(
 Route::put('/candidato/atualiza/{id}', [CandidatoController::class, 'update'])->name('candidato.change');
 
 Route::delete('/candidato/deleta/{id}', [CandidatoController::class, 'del'])->name('candidato.destroy');
+
+/* Route::get('/candidato/logout', [CandidatoController::class, 'destroy'])->name('candidato.destroy'); */
+
+
+
 
 
 /* Rotas para INSCRIÇÃO*/
